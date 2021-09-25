@@ -21,3 +21,7 @@ npm i --save-dev prettier eslint-config-prettier eslint-plugin-prettier
 ```
 npm install mongoose
 ```
+
+```
+npm install colors
+```
