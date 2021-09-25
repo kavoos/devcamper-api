@@ -25,3 +25,7 @@ npm install mongoose
 ```
 npm install colors
 ```
+
+```
+npm install slugify
+```
