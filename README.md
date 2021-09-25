@@ -4,8 +4,8 @@ config > config.env
 NODE_ENV=development
 PORT=5000
 
-# connection string from mongodb to connect to your application
-MONGO_URI=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+# connection string from mongodb to connect to your application. DB_NAME set to be devcamper
+MONGO_URI=MONGO_URI=mongodb+srv://<USER_NAME>:<PASSWORD>@kavoos.rir60.mongodb.net/<DB_NAME>?retryWrites=true&w=majority
 ```
 
 ```
