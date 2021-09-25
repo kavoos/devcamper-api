@@ -6,6 +6,9 @@ PORT=5000
 
 # connection string from mongodb to connect to your application. DB_NAME set to be devcamper
 MONGO_URI=MONGO_URI=mongodb+srv://<USER_NAME>:<PASSWORD>@kavoos.rir60.mongodb.net/<DB_NAME>?retryWrites=true&w=majority
+
+GEOCODER_PROVIDER=mapquest
+GEOCODER_API_KEY=[MAPQUEST_CONSUMER_KEY]
 ```
 
 ```
@@ -28,4 +31,8 @@ npm install colors
 
 ```
 npm install slugify
+```
+
+```
+npm install node-geocoder
 ```
