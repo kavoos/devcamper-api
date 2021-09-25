@@ -13,6 +13,7 @@
     "no-console": "off",
     "comma-dangle": "off",
     "consistent-return": "off",
-    "no-unused-vars": "warn"
+    "no-unused-vars": "warn",
+    "no-useless-escape": "warn"
   }
 }
