@@ -3,7 +3,7 @@ const geocoder = require('../utils/geocoder');
 const asyncHandler = require('../middlewares/async');
 const Bootcamp = require('../models/Bootcamp');
 
-// @desc    Get all bootcamp
+// @desc    Get all bootcamps
 // @route   GET api/vi/bootcamps
 // @access  Public
 exports.getBootcamps = asyncHandler(async (req, res, next) => {
@@ -67,7 +67,7 @@ exports.getBootcamps = asyncHandler(async (req, res, next) => {
     };
   }
 
-  res.status(201).json({
+  res.status(200).json({
     success: true,
     count: bootcamps.length,
     pagination,
@@ -87,7 +87,7 @@ exports.getBootcamp = asyncHandler(async (req, res, next) => {
     );
   }
 
-  res.status(201).json({
+  res.status(200).json({
     success: true,
     data: bootcamp,
   });
@@ -120,7 +120,7 @@ exports.updateBootcamp = asyncHandler(async (req, res, next) => {
     );
   }
 
-  res.status(201).json({
+  res.status(200).json({
     success: true,
     data: bootcamp,
   });
@@ -138,7 +138,7 @@ exports.deleteBootcamp = asyncHandler(async (req, res, next) => {
     );
   }
 
-  res.status(201).json({
+  res.status(200).json({
     success: true,
     data: { name: bootcamp.name },
   });
