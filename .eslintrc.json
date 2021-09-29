@@ -17,6 +17,7 @@
     "no-useless-escape": "warn",
     "implicit-arrow-linebreak": "off",
     "prefer-arrow-callback": "off",
-    "func-names": "off"
+    "func-names": "off",
+    "no-underscore-dangle": "off"
   }
 }
