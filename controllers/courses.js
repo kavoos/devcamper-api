@@ -78,20 +78,19 @@ exports.addCourse = asyncHandler(async (req, res, next) => {
 // @route   PUT api/v1/courses/:id
 // @access  Private
 exports.updateCourse = asyncHandler(async (req, res, next) => {
-  req.body.bootcamp = req.params.bootcampId;
+  const course = await Course.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+    runValidators: true,
+  });
 
-  const bootcamp = await Bootcamp.findById(req.params.bootcampId);
-
-  if (!bootcamp) {
+  if (!course) {
     return next(
       new ErrorResponse(
-        `Bootcamp not found with id of ${req.params.bootcampId}`,
+        `Course not found with id of ${req.params.bootcampId}`,
         404
       )
     );
   }
-
-  const course = await Course.create(req.body);
 
   res.status(200).json({
     success: true,
