@@ -9,6 +9,9 @@ MONGO_URI=MONGO_URI=mongodb+srv://<USER_NAME>:<PASSWORD>@kavoos.rir60.mongodb.ne
 
 GEOCODER_PROVIDER=mapquest
 GEOCODER_API_KEY=[MAPQUEST_CONSUMER_KEY]
+
+FILE_UPLOAD_PATH=./public/uploads
+MAX_FILE_UPLOAD=1000000
 ```
 
 ```
@@ -35,4 +38,8 @@ npm install slugify
 
 ```
 npm install node-geocoder
+```
+
+```
+npm install express-fileupload
 ```
