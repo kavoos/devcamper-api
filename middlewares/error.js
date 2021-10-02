@@ -7,25 +7,36 @@ const errorHandler = (err, req, res, next) => {
   // log to console for dev
   console.log(err.stack.red);
 
-  // mongoose bad ObjectId
-  if (err.name === 'CastError') {
-    const message = `Bootcamp not found with id of ${err.value}`;
+  switch (err.name) {
+    // mongoose bad ObjectId
+    case 'CastError':
+      error = new ErrorResponse(
+        `Resource not found with id of ${error.value}`,
+        404
+      );
+      break;
 
-    error = new ErrorResponse(message, 404);
-  }
+    // mongoose validation error
+    case 'ValidationError':
+      error = new ErrorResponse(Object.values(err.errors), 400);
+      break;
 
-  // mongoose duplicate key
-  if (err.code === 11000) {
-    const message = 'Duplicate field value entered';
+    case 'MongoError':
+      switch (err.code) {
+        // mongoose duplicate key
+        case 11000:
+          error = new ErrorResponse(`Duplicate field`, 400);
+          break;
+      }
+      break;
 
-    error = new ErrorResponse(message, 400);
-  }
+    case 'JsonWebTokenError':
+      error = new ErrorResponse('Not authorized', 401);
+      break;
 
-  // mongoose validation error
-  if (err.name === 'ValidationError') {
-    const message = Object.values(err.errors).map((v) => v.message);
-
-    error = new ErrorResponse(message, 400);
+    case 'TokenExpiredError':
+      error = new ErrorResponse('Please log in again', 401);
+      break;
   }
 
   res
