@@ -15,6 +15,7 @@ MAX_FILE_UPLOAD=1000000
 
 JWT_SECRET=[SOME RANDOM STRING]
 JWT_EXPIRE=30d
+JWT_COOKIE_EXPIRE=30
 ```
 
 ```
@@ -49,4 +50,8 @@ npm install express-fileupload
 
 ```
 npm install jsonwebtoken bcryptjs
+```
+
+```
+npm install cookie-parser
 ```
