@@ -18,6 +18,10 @@
     "implicit-arrow-linebreak": "off",
     "prefer-arrow-callback": "off",
     "func-names": "off",
-    "no-underscore-dangle": "off"
+    "no-underscore-dangle": "off",
+    "prefer-destructuring": ["error", {
+      "array": false,
+      "object": true
+    }
   }
 }
