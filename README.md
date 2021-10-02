@@ -43,3 +43,7 @@ npm install node-geocoder
 ```
 npm install express-fileupload
 ```
+
+```
+npm install jsonwebtoken bcryptjs
+```
