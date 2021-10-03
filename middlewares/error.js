@@ -10,10 +10,7 @@ const errorHandler = (err, req, res, next) => {
   switch (err.name) {
     // mongoose bad ObjectId
     case 'CastError':
-      error = new ErrorResponse(
-        `Resource not found with id of ${error.value}`,
-        404
-      );
+      error = new ErrorResponse(`Resource not found`, 404);
       break;
 
     // mongoose validation error

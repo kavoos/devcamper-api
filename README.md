@@ -70,3 +70,7 @@ npm install cookie-parser
 ```
 npm install nodemailer
 ```
+
+```
+npm install express-mongo-sanitize
+```
