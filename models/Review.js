@@ -59,12 +59,12 @@ ReviewSchema.statics.getAverageRating = async function (bootcampId) {
   }
 };
 
-// Call getAverageCost after save
+// Call getAverageRating after save
 ReviewSchema.post('save', async function () {
   await this.constructor.getAverageRating(this.bootcamp);
 });
 
-// Call getAverageCost before remove
+// Call getAverageRating after remove
 ReviewSchema.post('remove', async function () {
   await this.constructor.getAverageRating(this.bootcamp);
 });
