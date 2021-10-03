@@ -135,6 +135,14 @@ BootcampSchema.pre('save', async function (next) {
   next();
 });
 
+// update slug after updating title
+BootcampSchema.pre('findOneAndUpdate', function (next) {
+  if (this.getUpdate().name) {
+    this.set({ slug: slugify(this.getUpdate().name, { lower: true }) });
+  }
+  next();
+});
+
 // casecade delete courses when a bootcamp is deleted
 BootcampSchema.pre('remove', async function (next) {
   await this.model('Course').deleteMany({ bootcamp: this._id });
