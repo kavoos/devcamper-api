@@ -71,3 +71,46 @@ exports.addReview = asyncHandler(async (req, res, next) => {
     data: review,
   });
 });
+
+// @desc    Update review
+// @route   PUT api/v1/reviews/:id
+// @access  Private
+exports.updateReview = asyncHandler(async (req, res, next) => {
+  const review = await Review.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+    runValidators: true,
+  });
+
+  if (!review) {
+    return next(
+      new ErrorResponse(`Review not found with id of ${req.params.id}`, 404)
+    );
+  }
+
+  await review.save();
+
+  res.status(200).json({
+    success: true,
+    data: Review,
+  });
+});
+
+// @desc    Delete review
+// @route   DELETe api/v1/reviews/:id
+// @access  Private
+exports.deleteReview = asyncHandler(async (req, res, next) => {
+  const review = await Review.findById(req.params.id);
+
+  if (!review) {
+    return next(
+      new ErrorResponse(`Review not found with id of ${req.params.id}`, 404)
+    );
+  }
+
+  await review.remove();
+
+  res.status(200).json({
+    success: true,
+    data: { title: review.title },
+  });
+});

@@ -13,7 +13,6 @@ const {
   authorize,
   checkExistenceOwnership,
 } = require('../middlewares/auth');
-const Bootcamp = require('../models/Bootcamp');
 
 const router = express.Router({ mergeParams: true });
 

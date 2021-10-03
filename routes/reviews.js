@@ -1,5 +1,11 @@
 const express = require('express');
-const { getReviews, getReview, addReview } = require('../controllers/reviews');
+const {
+  getReviews,
+  getReview,
+  addReview,
+  deleteReview,
+  updateReview,
+} = require('../controllers/reviews');
 const Review = require('../models/Review');
 const advancedResults = require('../middlewares/advancedResults');
 const {
@@ -7,7 +13,6 @@ const {
   authorize,
   checkExistenceOwnership,
 } = require('../middlewares/auth');
-const Bootcamp = require('../models/Bootcamp');
 
 const router = express.Router({ mergeParams: true });
 
@@ -21,6 +26,20 @@ router
     getReviews
   )
   .post(protect, authorize('user', 'admin'), addReview);
-router.route('/:id').get(getReview);
+router
+  .route('/:id')
+  .get(getReview)
+  .put(
+    protect,
+    authorize('user', 'admin'),
+    checkExistenceOwnership(Review),
+    updateReview
+  )
+  .delete(
+    protect,
+    authorize('user', 'admin'),
+    checkExistenceOwnership(Review),
+    deleteReview
+  );
 
 module.exports = router;

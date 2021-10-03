@@ -82,12 +82,11 @@ exports.updateCourse = asyncHandler(async (req, res, next) => {
 
   if (!course) {
     return next(
-      new ErrorResponse(
-        `Course not found with id of ${req.params.bootcampId}`,
-        404
-      )
+      new ErrorResponse(`Course not found with id of ${req.params.id}`, 404)
     );
   }
+
+  await course.save();
 
   res.status(200).json({
     success: true,
@@ -103,14 +102,11 @@ exports.deleteCourse = asyncHandler(async (req, res, next) => {
 
   if (!course) {
     return next(
-      new ErrorResponse(
-        `Course not found with id of ${req.params.bootcampId}`,
-        404
-      )
+      new ErrorResponse(`Course not found with id of ${req.params.id}`, 404)
     );
   }
 
-  course.remove();
+  await course.remove();
 
   res.status(200).json({
     success: true,
