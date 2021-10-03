@@ -90,7 +90,7 @@ exports.logout = asyncHandler(async (req, res, next) => {
 
 // @desc    Get current logged in user
 // @route   GET api/v1/auth/me
-// @access  Private
+// @access  Public
 exports.getMe = asyncHandler(async function (req, res, next) {
   const user = await User.findById(req.user.id);
 
