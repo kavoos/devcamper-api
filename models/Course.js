@@ -67,13 +67,13 @@ CourseSchema.statics.getAverageCost = async function (bootcampId) {
 };
 
 // call getAverageCost after save
-CourseSchema.post('save', function () {
-  this.constructor.getAverageCost(this.bootcamp);
+CourseSchema.post('save', async function () {
+  await this.constructor.getAverageCost(this.bootcamp);
 });
 
 // call getAverageCost before remove
-CourseSchema.post('remove', function () {
-  this.constructor.getAverageCost(this.bootcamp);
+CourseSchema.post('remove', async function () {
+  await this.constructor.getAverageCost(this.bootcamp);
 });
 
 module.exports = mongoose.model('Course', CourseSchema);
