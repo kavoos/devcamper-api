@@ -79,3 +79,9 @@ npm install express-mongo-sanitize
 npm install helmet
 npm install xss-clean
 ```
+
+```
+npm install express-rate-limit
+npm install hpp
+npm install cors
+```

@@ -7,6 +7,9 @@ const cookieParser = require('cookie-parser');
 const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet');
 const xss = require('xss-clean');
+const rateLimit = require('express-rate-limit');
+const hpp = require('hpp');
+const cors = require('cors');
 const colors = require('colors');
 
 const errorHandler = require('./middlewares/error');
@@ -50,6 +53,22 @@ app.use(helmet());
 
 // prevent XSS attacks
 app.use(xss());
+
+// rate limiting
+// enable if you're behind a reverse proxy (Heroku, Bluemix, AWS ELB, Nginx, etc)
+// see https://expressjs.com/en/guide/behind-proxies.html
+// app.set('trust proxy', 1);
+const limiter = rateLimit({
+  windowMs: 10 * 60 * 1000, // 10 minutes
+  max: 100, // limit each IP to 100 requests per windowMs
+});
+app.use(limiter);
+
+// protect against HTTP parameter pollution attacks
+app.use(hpp());
+
+// enable cross-origin resource sharing
+app.use(cors());
 
 // set static folder
 app.use(express.static(path.join(__dirname, 'public')));
