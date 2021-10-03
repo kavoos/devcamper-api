@@ -21,6 +21,7 @@ const errorHandler = (err, req, res, next) => {
       error = new ErrorResponse(Object.values(err.errors), 400);
       break;
 
+    case 'MongoServerError':
     case 'MongoError':
       switch (err.code) {
         // mongoose duplicate key
